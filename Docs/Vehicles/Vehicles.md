@@ -272,7 +272,7 @@
 | 0xC3E8EF55 | <img src="Docs/Vehicles/img/0xC3E8EF55.jpg" width="200"> |
 | 0xC5D45A72 | <img src="Docs/Vehicles/img/0xC5D45A72.jpg" width="200"> |
 | 0xC6679659 | <img src="Docs/Vehicles/img/0xC6679659.jpg" width="200"> |
-| 0xC66AA3 | <img src="imDocs/Vehicles/g/0xC66AA3.jpg" width="200"> |
+| 0xC66AA3 | <img src="Docs/Vehicles/img/0xC66AA3.jpg" width="200"> |
 | 0xC729F2E2 | <img src="Docs/Vehicles/img/0xC729F2E2.jpg" width="200"> |
 | 0xC74F06F2 | <img src="Docs/Vehicles/img/0xC74F06F2.jpg" width="200"> |
 | 0xC801AC19 | <img src="Docs/Vehicles/img/0xC801AC19.jpg" width="200"> |
@@ -320,7 +320,7 @@
 | 0xDBAC553B | <img src="Docs/Vehicles/img/0xDBAC553B.jpg" width="200"> |
 | 0xDC022E89 | <img src="Docs/Vehicles/img/0xDC022E89.jpg" width="200"> |
 | 0xDCE1DBEB | <img src="Docs/Vehicles/img/0xDCE1DBEB.jpg" width="200"> |
-| 0xDD49B9 | <img src="imDocs/Vehicles/g/0xDD49B9.jpg" width="200"> |
+| 0xDD49B9 | <img src="Docs/Vehicles/img/0xDD49B9.jpg" width="200"> |
 | 0xDD894BE6 | <img src="Docs/Vehicles/img/0xDD894BE6.jpg" width="200"> |
 | 0xDDC94B40 | <img src="Docs/Vehicles/img/0xDDC94B40.jpg" width="200"> |
 | 0xDDE72960 | <img src="Docs/Vehicles/img/0xDDE72960.jpg" width="200"> |
