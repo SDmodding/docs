@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SDDEHD</title>
+    <link rel="shortcut icon" href="img/logo.svg" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/ajax.js"></script>
     <script src="js/docs.js"></script>
     <style>
 
@@ -54,7 +56,17 @@
                             </ul>
                             <form class="d-flex" role="search">
                                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                                <button class="btn btn-outline-success" type="submit">Search</button>
+                                <button class="btn btn-outline-success me-2" type="submit">Search</button>
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Theme
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end">
+                                      <li><a class="dropdown-item theme-btn" data-theme="light">Light</a></li>
+                                      <li><a class="dropdown-item theme-btn" data-theme="dark">Dark</a></li>
+                                      <li><a class="dropdown-item theme-btn" data-theme="os">System</a></li>
+                                    </ul>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -65,50 +77,5 @@
             </main>
         </div>
     </div>
-
-    <script>
-        $(document).ready(function () {
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').toggleClass('d-none');
-            });
-
-            // Add a window resize event handler
-            $(window).on("resize", function () {
-                if ($(window).width() < 1024) {
-                    $('#sidebar').addClass('d-none');
-                } else {
-                    $('#sidebar').removeClass('d-none');
-                }
-            });
-
-            // Add a click event handler for the main section
-            $('#main-region').on('click', function () {
-                if ($(window).width() < 1024 && !$('#sidebar').hasClass('d-none')) {
-                    $('#sidebar').addClass('d-none');
-                }
-            });
-                
-            // Trigger the resize event once when the page loads to set the initial state
-            $(window).trigger("resize");
-
-
-            docs.Initialize(function (error, data) {
-                if (error) {
-                    console.error('Error:', error);
-                } else {
-                    console.log('Data:', data);
-                    const rootElement = $('#docs-menu')[0];
-
-                    for (const item of data) {
-                        rootElement.appendChild(docs.CreateMenu(item));
-                    }
-
-                    docs.HandleMenu();
-                }
-            });
-
-            //document.getElementById('content').innerHTML = marked.parse('# Marked in the browser\n\nRendered by **marked**.');
-        });
-    </script>
 </body>
 </html>

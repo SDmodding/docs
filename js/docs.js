@@ -1,95 +1,101 @@
 const docs = {
     menu: null,
-    Initialize(callback)
+    md_viewer: null,
+    routes: null,
+    theme: localStorage.getItem("theme"),
+    dark_light: null,
+    Initialize()
     {
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', "Docs/router.json", true);
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4) {
-                if (xhr.status === 200) {
-                try {
-                    console.log(xhr.responseText)
-                    var data = JSON.parse(xhr.responseText);
-                    callback(null, data);
-                } catch (error) {
-                    callback(error, null);
-                }
-                } else {
-                    callback(new Error('Request failed with status: ' + xhr.status), null);
-                }
+        docs.SetTheme();
+        docs.HandleTheme();
+
+        docs.md_viewer = document.getElementById("md-viewer");
+        ajax.GetRequest("Docs/router.json", function (error, data) {
+            if(error == null){
+                var json_obj = JSON.parse(data);
+                docs.routes = json_obj;
+
+                const menuHTML = docs.CreateMenu(docs.routes);
+                document.getElementById('docs-menu').innerHTML = menuHTML;
+
+                docs.LoadRouter();
             }
-        };
-        xhr.send();
+        })
     },
-    CreateMenu(item) {
-        if (item.children) {
-            const li = document.createElement('li');
-            const a = document.createElement('a');
-            a.textContent = item.label;
-            a.dataset.url = item.url;
-            a.classList.add("docs-link");
-
-            const ul = document.createElement('ul');
-            for (const child of item.children) {
-                const child_li = document.createElement('li');
-                const child_a = document.createElement('a');
-                child_a.textContent = child.label;
-                child_a.dataset.url = child.url;
-                child_a.classList.add("docs-link");
-
-    
-                if (child.children) {
-                    child_li.appendChild(CreateMenu(child));
-                }
-    
-                child_li.appendChild(child_a);
-                ul.appendChild(child_li);
+    SetTheme()
+    {
+        // data-bs-theme="dark"
+        if(docs.theme)
+        {
+            switch(docs.theme)
+            {
+                case "os":
+                    {
+                        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+                            docs.dark_light = "dark";
+                        else 
+                            docs.dark_light = "light";
+                        break;
+                    }
+                case "dark": docs.dark_light = "dark"; break;
+                case "light": docs.dark_light = "light"; break;
             }
-            li.appendChild(a);
-            li.appendChild(ul);
-            return li;
-        } else {
-            const li = document.createElement('li');
-            const a = document.createElement('a');
-            a.textContent = item.label;
-            a.dataset.url = item.url;
-            a.classList.add("docs-link");
-
-            li.appendChild(a);
-            return li;
         }
+        else
+        {
+            docs.dark_light = "light";
+        }
+
+        let html = document.getElementsByTagName("html")
+        html[0].setAttribute("data-bs-theme", docs.dark_light);
+        localStorage.setItem("theme", docs.theme);
     },
-    HandleMenu()
+    HandleTheme()
     {
-        $(".docs-link").click(function(){
-            console.log($(this).attr("data-url"))
-            docs.GetMD($(this).attr("data-url"), function(error, content){
-                console.log(content)
-                if(error == null)
-                    $("#main-region").html(content);
+        let theme_btn = document.querySelectorAll(".theme-btn");
+        theme_btn.forEach(function(btn) {
+            btn.addEventListener("click", function(e) {
+                docs.theme = e.target.getAttribute("data-theme");
+                localStorage.setItem("theme", docs.theme);
+                docs.SetTheme();
             });
         });
+
     },
-    GetMD(url, callback)
-    {
-        console.log(url)
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', url, true);
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4) {
-                if (xhr.status === 200) {
-                try {
-                    console.log(xhr.responseText)
-                    let output = marked.parse(xhr.responseText);
-                    callback(null, output);
-                } catch (error) {
-                    callback(error, null);
-                }
-                } else {
-                    callback(new Error('Request failed with status: ' + xhr.status), null);
-                }
+    CreateMenu(menu_data) {
+        let menuHTML = '<ul>';
+    
+        for (const item of menu_data) {
+            menuHTML += '<li>';
+            if (item.url) {
+                menuHTML += `<a href="?query=${item.url}">${item.label}</a>`;
+            } else {
+                menuHTML += item.label;
             }
-        };
-        xhr.send();
+    
+            if (item.children && item.children.length > 0) {
+                menuHTML += docs.CreateMenu(item.children);
+            }
+    
+            menuHTML += '</li>';
+        }
+    
+        menuHTML += '</ul>';
+        return menuHTML;
+    },
+    LoadRouter()
+    {
+        const url = new URL(window.location.href);
+        const searchParams = url.searchParams;
+        const query = searchParams.get("query");
+
+        ajax.GetRequest(query, function(error, data){
+            if(error == null)
+                docs.md_viewer.innerHTML = marked.parse(data);
+            
+        })
+
+        console.log(query);
+
     }
 };
