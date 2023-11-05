@@ -1,0 +1,28 @@
+[
+    {
+        "label": "General",
+        "url": "Docs/Docs.md",
+        "children": [
+            {
+                "label": "Characters",
+                "url": "Docs/Characters/Characters.md"                    
+            },
+            {
+                "label": "Vehicles",
+                "url": "Docs/Vehicles/Vehicles.md"                    
+            },
+            {
+                "label": "Weapons",
+                "url": "Docs/Weapons/Weapons.md"                    
+            }
+        ]
+    },
+    {
+        "label": "SDK",
+        "url": "Docs/SDK.md"
+    },
+    {
+        "label": "SDDEHD",
+        "url": "Docs/SDDEHD.md"
+    }
+]
