@@ -3,7 +3,7 @@
 - Get to know the vehicles in the game, from fast cars to stylish bikes.
 
 
-<div class="grid-container">
+<!--div class="grid-container">
     <div class="grid-item">
         <div class="grid-item-img">
             <img src="Docs/Vehicles/img/0x1007AA0C.jpg" alt="" title="" loading="lazy">
@@ -2105,7 +2105,7 @@
         <b>Hash:</b> 0xFF1BF371<br>
     </div>
 
-</div>
+</div-->
 
 <!--| HASH | Preview |
 |----------|----------|
