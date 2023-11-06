@@ -139,6 +139,7 @@ const docs = {
 
                         let img = document.createElement('img');
                         img.src="Docs/Vehicles/img/"+categories.Categories[key][model_key][variation]+".jpg";
+                        img.setAttribute("loading", "lazzy");
                         grid_item_img.appendChild(img);
                     });
                 });
