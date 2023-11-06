@@ -100,7 +100,7 @@ const docs = {
     },
     DoVehicles()
     {
-        ajax.GetRequest("Docs/Vehicles/vehicles.json", function(err, data){
+        ajax.GetRequest("Docs/Vehicles/Vehicles.json", function(err, data){
 
             let categories = JSON.parse(data);
 
