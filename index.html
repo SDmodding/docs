@@ -1,83 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>SDDEHD</title>
-        <link rel="shortcut icon" href="img/logo.svg" type="image/x-icon">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-        <script src="js/ui.js"></script>
-        <script src="js/ajax.js"></script>
-        <script src="js/docs.js"></script>
-        <link rel="stylesheet" href="css/grid-view.css">
+        <title>Supposed Website</title>
         <style>
-
-            html, body
-            {
-                width: 100%;
-                height: 100%;
-            }
-            
-            #sidebar 
-            {
-                min-width: 250px;
-                max-width: 250px;
+            body {
+                margin: 0;
+                height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: #000;
+                color: #fff;
+                font-family: Arial, sans-serif;
+                text-align: center;
             }
         </style>
     </head>
     <body>
-        <div class="container-fluid p-0 h-100">
-            <div class="w-100 d-flex h-100">
-                <!-- Sidebar -->
-                <nav id="sidebar" class="bg-body-tertiary sidebar d-none h-100 overflow-auto">
-                    <nav class="navbar bg-body-tertiary">
-                        <div class="container">
-                            <a class="navbar-brand" href="#">
-                                <img src="img/logo.svg" height="40" alt="SDDEHD">
-                                SDDEHD
-                            </a>
-                        </div>
-                    </nav>
-                    <div class="position-sticky p-2">
-                        <ul class="nav flex-column" id="docs-menu">
-                            
-                        </ul>
-                    </div>
-                </nav>
-
-                <!-- Main Content -->
-                <main class="w-100 h-100 overflow-auto">
-                    <nav class="navbar navbar-expand bg-body-tertiary">
-                        <div class="container-fluid">
-                            <button class="btn text-white" id="sidebarCollapse"><span class="navbar-toggler-icon"></span></button>
-                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                </ul>
-                                <form class="d-flex" role="search">
-                                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                                    <button class="btn btn-outline-success me-2" type="submit">Search</button>
-                                    <div class="dropdown">
-                                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Theme
-                                        </button>
-                                        <ul class="dropdown-menu dropdown-menu-end">
-                                        <li><a class="dropdown-item theme-btn" data-theme="light">Light</a></li>
-                                        <li><a class="dropdown-item theme-btn" data-theme="dark">Dark</a></li>
-                                        <li><a class="dropdown-item theme-btn" data-theme="os">System</a></li>
-                                        </ul>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </nav>
-                    <div class="p-2" id="main-region">
-                        <div id="md-viewer"></div>
-                        <div id="vehicle-viewer"></div>
-                    </div>
-                </main>
-            </div>
+        <div>        
+            <h3>This timer re-present of Ini's last commit and not working on website:</h3><br>
+            <div id="lol"></div>
         </div>
+        <script>
+        setInterval(function() {
+            const _DateDifference = new Date() - new Date("2023-11-06T03:07:07.000+01:00");
+            const _Days = Math.floor(_DateDifference / (1000 * 60 * 60 * 24));
+            const _Hours = Math.floor((_DateDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const _Minutes = Math.floor((_DateDifference % (1000 * 60 * 60)) / (1000 * 60));
+            const _Seconds = Math.floor((_DateDifference % (1000 * 60)) / 1000);
+            document.getElementById("lol").innerText = `${_Days} days, ${_Hours} hours, ${_Minutes} minutes, ${_Seconds} seconds`;
+        }, 1000);
+        </script>
     </body>
 </html>
